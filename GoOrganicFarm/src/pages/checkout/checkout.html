@@ -1,0 +1,49 @@
+<!--
+  Generated template for the Checkout page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Confirm Checkout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  >
+  
+<ion-list radio-group [(ngModel)]="DeliveryAddressID">
+   
+  <ion-list-header>
+    Delivery Address
+  </ion-list-header>
+  
+  <ion-item *ngFor="let address of AddressList" >
+    <ion-label>{{address.AddressLine1}}<br>{{address.AddressLine2}}<br>{{address.AddressCity}}</ion-label>
+    <ion-radio [checked]="address.AddressISDefault" (ionSelect)="AddressChanged(address.AddressID)"  value="{{address.AddressID}}" ></ion-radio>
+  </ion-item>
+    
+
+</ion-list>
+
+<ion-list radio-group [(ngModel)]="PaymentFormID">
+  <ion-list-header>
+    Payment Method
+  </ion-list-header>
+ 
+  <ion-item *ngFor="let form of PaymentFormList" >
+    <ion-label>{{form.PaymentFormDescription}}</ion-label>
+    <ion-radio (ionSelect)="PaymentFormChanged(form.PaymentFormID)" checked value="{{form.PaymentFormID}}" ></ion-radio>
+  </ion-item>
+    
+
+</ion-list>
+
+
+<button ion-button full color="dark" (click)="PlaceOrder(Item)" > 
+   <ion-icon   ios="ios-card" md="md-card"></ion-icon>&nbsp;
+   Confirm Order</button>
+</ion-content>

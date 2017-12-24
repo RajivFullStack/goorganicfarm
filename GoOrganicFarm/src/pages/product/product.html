@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Product List</ion-title>
+      
+ <ion-buttons right>
+        <button ion-button (click)="OpenCart()">
+            <ion-icon name="ios-cart-outline" style="position:relative; font-size:3em;">
+                <span style="position:absolute; top:-.2em; color:yellow; left:.5em;  font-size:19px !important">
+                   {{ListGroupSalesOrder==undefined?'':ListGroupSalesOrder.length}}
+                  </span>
+            </ion-icon>
+        </button>
+    </ion-buttons>
+
+     
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
+  <ion-searchbar  (ionInput)="searchFn($event)" placeholder="Search Product"></ion-searchbar>
+  <ion-list>
+     
+    
+    <ion-item (click)="itemTapped($event, item)" *ngFor="let item of items | search: term">
+      
+      <ion-thumbnail item-left>
+        <img src="{{item.ProductIcon}}">
+        <!--<ion-icon [name]="item.icon" item-left></ion-icon>-->
+      </ion-thumbnail>
+      <h2>{{item.ProductCode}} </h2>
+      <p>{{item.ProductDescription}}</p>
+       <!--<button ion-button clear item-right (click)="itemTapped($event, item)">View</button>-->
+       
+        <!--<button ion-button icon-left>
+        
+       <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
+         &nbsp;Add to Cart
+      </button>-->
+      <!--<button ion-button item-right  (click)="itemTapped($event, item)">
+        
+        <ion-icon ios="ios-alert"  md="md-alert"></ion-icon>
+        &nbsp; View
+      </button>-->
+    </ion-item>
+   
+  </ion-list>
+  
+</ion-content>

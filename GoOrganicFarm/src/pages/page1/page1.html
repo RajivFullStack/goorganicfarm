@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+  <ion-item>
+    <ion-label floating>First Name</ion-label>
+    <ion-input name="FirstName" type="text" [(ngModel)]="FirstName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Last Name</ion-label>
+    <ion-input name="LastName" type="text" [(ngModel)]="LastName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Email ID</ion-label>
+    <ion-input  name="EmailID" readonly type="email"  [(ngModel)]="EmailID"></ion-input>
+  </ion-item>
+
+   
+  <ion-item>
+    <ion-label floating>Phone No.</ion-label>
+    <ion-input name="PhoneNumber" OnlyNumber="true" type="number" [(ngModel)]="PhoneNumber"></ion-input>
+  </ion-item>
+   <ion-item>
+    <ion-label floating>PIN</ion-label>
+    <ion-input name="pin" type="number" OnlyNumber="true"   maxlength="4"   [(ngModel)]="pin"></ion-input>
+  </ion-item>
+
+</ion-list>
+<div padding>
+    <button ion-button color="secondary" block (click)="UpdateProfile()">Update</button>
+  </div>
+  
+</ion-content>

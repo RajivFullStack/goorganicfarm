@@ -1,0 +1,49 @@
+<!--
+  Generated template for the Address page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Address List</ion-title>
+    <ion-buttons right>
+        <button ion-button (click)="AddNewAddress()">
+           <ion-icon name="ios-add-outline" style="position:relative; font-size:3em;">
+                 
+            </ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+ <ion-item (click)="itemTapped($event, item)" *ngFor="let item of AddressList">
+      
+      <h1>Line 1 : {{item.AddressLine1}} </h1>
+      <h2>Line 2 : {{item.AddressLine2}} </h2>
+      <h2>City : {{item.AddressCity}} </h2>
+      <p>Zip : {{item.AddressZip}}</p>
+      <p><b>Mobile No : {{item.AddressMobileNumber}}</b></p>
+       <!--<button ion-button clear item-right (click)="itemTapped($event, item)">View</button>-->
+       
+        <button ion-button icon-left color="secondary" (click)="EditAddress(item)">
+        
+       <ion-icon ios="ios-create" md="md-create"></ion-icon>
+         &nbsp;Edit
+      </button> 
+       <!--<button ion-button item-right color="danger"  (click)="DeleteAddress(item)">
+        
+        <ion-icon ios="ios-trash"  md="md-trash"></ion-icon>
+        &nbsp; Delete
+      </button> -->
+    </ion-item>
+
+</ion-content>

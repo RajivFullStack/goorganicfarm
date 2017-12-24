@@ -1,0 +1,94 @@
+<!--
+  Generated template for the Cart page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Cart</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+ 
+
+    <ion-card *ngFor="let item of Item.ListGroupSalesOrder"> 
+
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="{{item.SalesOrderProductIcon}}">
+    </ion-avatar>
+    <h2>{{item.SalesOrder_ProductCode}}</h2>
+    <p>Product Description Goes here</p>
+    <!--<p>Price : INR {{item.SalesOrder_ProductCost}}</p>-->
+  </ion-item>
+
+   
+
+  <!--<ion-card-content>
+    <p>Product Description Goes here</p>
+  </ion-card-content>-->
+
+  
+
+  <ion-row>
+    <ion-item>
+  <ion-label>Unit Of Measure</ion-label>
+  <ion-input readonly   [(ngModel)]="item.SalesOrder_UnitOfMeasureCode"></ion-input>
+</ion-item>
+</ion-row>
+
+<ion-row>
+ <ion-item>
+  <ion-label>Product Quantity</ion-label>
+  <ion-input OnlyNumber="true"  min="1"  type="number" style="border-bottom:solid 2px red;" [(ngModel)]="item.SalesOrder_ProductQuantity"></ion-input>
+</ion-item>
+</ion-row>
+
+<ion-row>
+<ion-item>
+  <ion-label>Price</ion-label>
+  <ion-input readonly   value="{{item.SalesOrder_ProductCost*item.SalesOrder_ProductQuantity}}"></ion-input>
+</ion-item>
+</ion-row>
+
+<ion-row>
+<ion-item>
+  <ion-label>Order Date</ion-label>
+  <ion-input readonly   value="{{item.SalesOrder_OrderDate | date: 'dd-MMM-yyyy'}}"></ion-input>
+</ion-item>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+    <button ion-button color="secondary" (click)="updateItem(item,Item.SalesOrder_UserId)"  icon-left>
+      <ion-icon ios="ios-create" md="md-create"></ion-icon>
+      Update
+    </button>
+    </ion-col>
+
+     <ion-col>
+&nbsp;
+     </ion-col>
+    <ion-col>
+     
+    <button ion-button color="danger" (click)="removeItem(item);" icon-left>
+      <ion-icon name='trash'  ></ion-icon>
+      Remove
+    </button>
+    </ion-col>
+     
+  </ion-row>
+
+</ion-card>
+
+<button ion-button full color="dark" (click)="ConfirmCheckOut(Item)" > 
+   <ion-icon   ios="ios-card" md="md-card"></ion-icon>&nbsp;
+   Check Out</button>
+</ion-content>
+ 
+  

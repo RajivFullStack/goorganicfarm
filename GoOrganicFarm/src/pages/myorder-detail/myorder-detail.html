@@ -1,0 +1,82 @@
+<!--
+  Generated template for the MyorderDetail page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary"> 
+    
+    <ion-title>Order Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+
+<ion-card *ngFor="let item of Item"> 
+
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="{{item.SalesOrderProductIcon}}">
+    </ion-avatar>
+    <h2>{{item.SalesOrder_ProductCode}}</h2>
+    <p>Product Description Goes here</p>
+   
+  </ion-item>
+
+  <ion-row>
+    <ion-item>
+  <ion-label>Unit Of Measure</ion-label>
+  <ion-input readonly   [(ngModel)]="item.SalesOrder_UnitOfMeasureCode"></ion-input>
+</ion-item>
+</ion-row>
+
+<ion-row>
+ <ion-item>
+  <ion-label>Product Quantity</ion-label>
+  <ion-input readonly type="text" OnlyNumber="true" value="{{item.SalesOrder_ProductQuantity}}"></ion-input>
+</ion-item>
+</ion-row>
+
+
+<ion-row>
+<ion-item>
+  <ion-label>Price</ion-label>
+  <ion-input readonly   value="{{item.SalesOrder_ProductCost*item.SalesOrder_ProductQuantity}} INR"></ion-input>
+</ion-item>
+  </ion-row>
+
+  <ion-row>
+<ion-item>
+  <ion-label>Order Date</ion-label>
+  <ion-input readonly   value="{{item.SalesOrder_OrderDate | date: 'dd-MMM-yyyy'}}"></ion-input>
+</ion-item>
+  </ion-row>
+
+<ion-row>
+<ion-item>
+  <ion-label>Order Status</ion-label>
+  <ion-input readonly   value="{{item.SalesOrderStatus}}"></ion-input>
+</ion-item>
+  </ion-row>
+
+<ion-row>
+<ion-item>
+   <button ion-button full color="danger" icon-left (click)='cancelOrder(item)'>
+      <ion-icon name='close'  ></ion-icon>
+      Cancel Order
+    </button>
+</ion-item>
+  </ion-row>
+</ion-card>
+
+ 
+
+<button color="dark" ion-button full (click)="dismiss()">
+   <ion-icon ios="ios-back" md="md-back"></ion-icon>&nbsp;
+   Back To Order</button>
+</ion-content>
